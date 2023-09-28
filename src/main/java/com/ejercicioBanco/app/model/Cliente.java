@@ -13,8 +13,6 @@ import jakarta.persistence.Table;
 public class Cliente {
 	
 	@Id
-	@SequenceGenerator(name="cliente_sequence",sequenceName="cliente_sequence",allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator = "cliente_sequence")
 	@Column(name="Cliente_ID")
 	private Long id;
 	
@@ -25,10 +23,21 @@ public class Cliente {
 	private String apellido;
 
 	@Column(name="Cedula")
-	private Long cedula;
+	private int cedula;
 	
 	@Column(name="Correo")
 	private String correo;
+
+	public Cliente() {
+		
+	}
+	
+	public Cliente( String nombre, String apellido, int cedula, String correo) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.cedula = cedula;
+		this.correo = correo;
+	}
 
 	public Long getId() {
 		return id;
@@ -54,11 +63,11 @@ public class Cliente {
 		this.apellido = apellido;
 	}
 
-	public Long getCedula() {
+	public int getCedula() {
 		return cedula;
 	}
 
-	public void setCedula(Long cedula) {
+	public void setCedula(int cedula) {
 		this.cedula = cedula;
 	}
 
